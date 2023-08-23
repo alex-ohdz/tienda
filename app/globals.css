@@ -6,7 +6,7 @@
 
 /* ################################# */
 .slider {
-  height: calc(100vh - 100px);
+  height: 80vh;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -15,6 +15,7 @@
 }
 
 .image {
+  height: 80vh;
   max-width: 100%;
   max-height: 100%;
   object-fit: cover;
@@ -29,5 +30,14 @@
   opacity: 1;
   transition-duration: 1s;
   transform: scale(1.08);
+}
+
+.paginar{
+  position: absolute;
+  bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 /* ################################# */

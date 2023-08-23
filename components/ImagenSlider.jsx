@@ -2,21 +2,17 @@
 
 import React, { useState } from 'react';
 import { SliderData } from './SliderData';
-
+import Pagination from '@mui/material/Pagination';
 
 const ImageSlider = ({ slides }) => {
-  const [current, setCurrent] = useState(0);
+  const [current, setCurrent] = useState(1);
   const length = slides.length;
+  
+  const handlePageChange = (event, value) => {
+    setCurrent(value);
+  }
 
-  const nextSlide = () => {
-    setCurrent(current === length - 1 ? 0 : current + 1);
-  };
-
-  const prevSlide = () => {
-    setCurrent(current === 0 ? length - 1 : current - 1);
-  };
-
-  if (!Array.isArray(slides) || slides.length <= 0) {
+  if (!Array.isArray(slides) || length <= 0) {
     return null;
   }
 
@@ -26,14 +22,22 @@ const ImageSlider = ({ slides }) => {
       {SliderData.map((slide, index) => {
         return (
           <div
-            className={index === current ? 'slide active' : 'slide'}
+            className={index === current - 1 ? 'slide active' : 'slide'}
             key={index}>
-            {index === current && (
+            {index === current - 1 && (
               <img src={slide.image} alt='travel image' className='image' />
             )}
+              
           </div>
+          
         );
       })}
+      <Pagination 
+              count={length} 
+              page={current}
+              onChange={handlePageChange}
+               size="small" 
+               className='paginar'/>
     </section>
   );
 };

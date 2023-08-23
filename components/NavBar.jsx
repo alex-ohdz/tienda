@@ -14,6 +14,17 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
+import Badge from "@mui/material/Badge";
+import { styled } from "@mui/material/styles";
+
+const StyledBadge = styled(Badge)(({ theme }) => ({
+  "& .MuiBadge-badge": {
+    right: 10,
+    top: 1,
+    border: `2px solid ${theme.palette.background.paper}`,
+    padding: "0 4px",
+  },
+}));
 
 const pages = ["Ofertas", "Productos", "Información", "Contacto"];
 const settings = ["Perfil", "Carrito", "Cerrar Sesión"];
@@ -55,7 +66,8 @@ function ResponsiveAppBar() {
               color: "inherit",
               textDecoration: "none",
             }}
-          >MercancíaVC
+          >
+            MercancíaVC
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -124,7 +136,7 @@ function ResponsiveAppBar() {
               </Button>
             ))}
           </Box>
-          <Box >
+          <Box>
             <Tooltip title="Buscar">
               <IconButton
                 className="navB"
@@ -137,21 +149,27 @@ function ResponsiveAppBar() {
                 />
               </IconButton>
             </Tooltip>
-            <Tooltip title="Comprar">
+            <Tooltip title="Ver carrito">
               <IconButton
                 className="navB"
                 color="primary"
                 aria-label="buy_car"
                 onClick={""}
               >
-                <ShoppingCartOutlinedIcon
-                  sx={{ fontSize: 25, color: "ButtonHighlight", marginRight: "12px" }}
-                />
+                <StyledBadge badgeContent={200} color="secondary">
+                  <ShoppingCartOutlinedIcon
+                    sx={{
+                      fontSize: 25,
+                      color: "ButtonHighlight",
+                      marginRight: "12px",
+                    }}
+                  />
+                </StyledBadge>
               </IconButton>
             </Tooltip>
           </Box>
           <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
+            <Tooltip title="Administrar Perfil">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
               </IconButton>
