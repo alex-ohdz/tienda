@@ -2,8 +2,7 @@
 
 import React, { useState } from 'react';
 import { SliderData } from './SliderData';
-import KeyboardArrowLeftRoundedIcon from '@mui/icons-material/KeyboardArrowLeftRounded';
-import KeyboardArrowRightRoundedIcon from '@mui/icons-material/KeyboardArrowRightRounded';
+
 
 const ImageSlider = ({ slides }) => {
   const [current, setCurrent] = useState(0);
@@ -23,8 +22,7 @@ const ImageSlider = ({ slides }) => {
 
   return (
     <section className='slider'>
-      <KeyboardArrowLeftRoundedIcon className='left-arrow' onClick={prevSlide} />
-      <KeyboardArrowRightRoundedIcon className='right-arrow' onClick={nextSlide} />
+      
       {SliderData.map((slide, index) => {
         return (
           <div
