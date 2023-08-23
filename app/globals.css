@@ -1,20 +1,17 @@
-.navegador {
-  display: flex;
-  justify-content: space-between;
-  background-color: transparent;
+.App_Bar {
+  padding-left: 10px;
+  padding-right: 10px;
+  background-color: rgba(0, 0, 0, 0.841);
 }
 
-.navB {
-}
 /* ################################# */
 .slider {
-	height: calc( 100vh - 100px );
-	display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    overflow: hidden;
-    flex-direction: column;
-
+  height: calc(100vh - 100px);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  overflow: hidden;
+  flex-direction: column;
 }
 
 .image {
@@ -22,7 +19,6 @@
   max-height: 100%;
   object-fit: cover;
 }
-
 
 .slide {
   opacity: 0;

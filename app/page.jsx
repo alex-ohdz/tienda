@@ -2,12 +2,6 @@ import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
-
-import { Button, IconButton, Tooltip } from "@mui/material";
-
-import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
-import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
-import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import ImageSlider from "@components/ImagenSlider.jsx";
 import { SliderData } from "@components/SliderData.js";
 import ResponsiveAppBar from "@components/navBar.jsx";
