@@ -26,7 +26,7 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
   },
 }));
 
-const pages = ["Ofertas", "Productos", "Información", "Contacto"];
+const pages = ["Ofertas", "Productos", "Info", "Contacto"];
 const settings = ["Perfil", "Carrito", "Cerrar Sesión"];
 
 function ResponsiveAppBar() {
@@ -49,7 +49,7 @@ function ResponsiveAppBar() {
   };
 
   return (
-    <AppBar position="static">
+    <AppBar position="fixed">
       <Container className="App_Bar" maxWidth="xl">
         <Toolbar disableGutters>
           <Typography
