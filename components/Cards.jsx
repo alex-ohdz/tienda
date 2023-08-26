@@ -5,22 +5,6 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import CardActionArea from "@mui/material/CardActionArea";
 
-const imagenes = [
-  "https://cdn.aarp.net/content/dam/aarp/entertainment/beauty-and-style/2020/04/1140-hair-products-on-table-esp.imgcache.rev.web.1914.1100.jpg",
-  "https://img.freepik.com/premium-vector/set-combs-hair-care-items-vector-illustration_324395-107.jpg?w=2000",
-  "https://img.freepik.com/premium-vector/hair-care-treatment-products_316839-4662.jpg",
-  "https://img.freepik.com/premium-vector/hair-care-treatment-products_316839-4662.jpg",
-  "https://img.freepik.com/premium-vector/hair-care-treatment-products_316839-4662.jpg",
-  "https://img.freepik.com/premium-vector/hair-care-treatment-products_316839-4662.jpg",
-  "https://img.freepik.com/premium-vector/hair-care-treatment-products_316839-4662.jpg",
-  "https://img.freepik.com/premium-vector/hair-care-treatment-products_316839-4662.jpg",
-  "https://img.freepik.com/premium-vector/hair-care-treatment-products_316839-4662.jpg",
-  "https://img.freepik.com/premium-vector/hair-care-treatment-products_316839-4662.jpg",
-  "https://img.freepik.com/premium-vector/hair-care-treatment-products_316839-4662.jpg",
-  "https://img.freepik.com/premium-vector/hair-care-treatment-products_316839-4662.jpg",
-  "https://img.freepik.com/premium-vector/hair-care-treatment-products_316839-4662.jpg",
-];
-
 const Tarjeta = ({ imageUrl, index }) => (
   <Card>
     <CardActionArea className="cardBody">
@@ -37,7 +21,7 @@ const Tarjeta = ({ imageUrl, index }) => (
   </Card>
 );
 
-export default function ActionAreaCard() {
+export default function ActionAreaCard({imagenes}) {
   return (
    
     <div className="cards">
