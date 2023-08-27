@@ -2,13 +2,11 @@ import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
-import Link from 'next/link'
+
 import ImageSlider from "@components/ImagenSlider.jsx";
 import { SliderData } from "@components/SliderData.js";
-import ResponsiveAppBar from "@components/navBar.jsx";
 import Texto1 from "@components/Texto1.jsx";
 import Cards from "@components/Cards.jsx";
-import Footer from "@components/Footer";
 import CarouselCard from "@components/CarouselCard.jsx";
 import Texto2 from "@components/Texto2";
 
@@ -53,17 +51,13 @@ const offers = [
 export default function Home() {
   return (
     <main>
-      <ResponsiveAppBar />
-      <ImageSlider slides={SliderData} />
+      {/* <ImageSlider slides={SliderData} />
       <Texto1 titulo={"¡Ofertas Especiales!"} description={"Descubre nuestras increíbles ofertas disponibles."}/>
       <CarouselCard  cards={offers} />
       <Texto2 titulo={"Nuestros Productos"} description={""}/>
-      <Cards imagenes={imagenes}/>
-      <Footer/>
+      <Cards imagenes={imagenes}/> */}
       
-      <Link href="/Ofertas" passHref>
-        Contacto
-      </Link>
+      
     </main>
   );
 }

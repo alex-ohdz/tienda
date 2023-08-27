@@ -16,13 +16,12 @@ import MenuItem from "@mui/material/MenuItem";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import Badge from "@mui/material/Badge";
-import ListItemIcon from '@mui/material/ListItemIcon';
-import Divider from '@mui/material/Divider';
-import PersonAdd from '@mui/icons-material/PersonAdd';
-import Settings from '@mui/icons-material/Settings';
-import Logout from '@mui/icons-material/Logout';
+import ListItemIcon from "@mui/material/ListItemIcon";
+import Divider from "@mui/material/Divider";
+import Settings from "@mui/icons-material/Settings";
+import Logout from "@mui/icons-material/Logout";
 import { styled } from "@mui/material/styles";
-
+import Link from "next/link";
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
   "& .MuiBadge-badge": {
@@ -33,8 +32,7 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
   },
 }));
 
-const pages = ["Ofertas"
-, "Productos", "Info", "Contacto"];
+const pages = ["Ofertas", "Productos", "Info", "Contacto"];
 
 function ResponsiveAppBar() {
   const [drawerOpen, setDrawerOpen] = React.useState(false);
@@ -50,21 +48,16 @@ function ResponsiveAppBar() {
     setAnchorEl(null);
   };
 
-  
   const toggleDrawer = (open) => (event) => {
     if (
       event &&
-      event.type === 'keydown' &&
-      (event.key === 'Tab' || event.key === 'Shift')
+      event.type === "keydown" &&
+      (event.key === "Tab" || event.key === "Shift")
     ) {
       return;
     }
     setDrawerOpen(open);
   };
-
-
-
- 
 
   return (
     <AppBar position="sticky">
@@ -89,7 +82,7 @@ function ResponsiveAppBar() {
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
-          <IconButton
+            <IconButton
               size="medium"
               aria-label="account of current user"
               aria-controls="menu-appbar"
@@ -104,28 +97,40 @@ function ResponsiveAppBar() {
               open={drawerOpen}
               onClose={toggleDrawer(false)}
             >
-              <Box sx={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'center',
-                  justifyContent: 'center',
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  justifyContent: "center",
                   p: 2,
-                }}>
+                }}
+              >
                 {pages.map((page) => (
-                  <MenuItem key={page} onClick={toggleDrawer(false)}
-                  sx={{
-                    "&:hover": {
-                      backgroundColor: "rgba(0, 0, 0, 0.1)", 
-                    },
-                  }}>
-                    <Typography variant="h6"
-                      textAlign="center"
+                  <Link key={page} href={`${page}`}>
+                    <MenuItem
+                      key={page}
+                      onClick={toggleDrawer(false)}
                       sx={{
-                        fontFamily: "Arial", 
-                        fontSize: "18px", 
-                        color: "text.primary",
-                      }}>{page}</Typography>
-                  </MenuItem>
+                        "&:hover": {
+                          backgroundColor: "rgba(0, 0, 0, 0.1)",
+                        },
+                      }}
+                    >
+                      <Typography
+                        variant="h6"
+                        textAlign="center"
+                        sx={{
+                          fontFamily: "Arial",
+                          fontSize: "18px",
+                          color: "text.primary",
+                        }}
+                      >
+                        {page}
+                      </Typography>
+                    </MenuItem>
+                    <a>{page}</a>
+                  </Link>
                 ))}
               </Box>
             </Drawer>
@@ -192,80 +197,82 @@ function ResponsiveAppBar() {
               </IconButton>
             </Tooltip>
           </Box>
-          <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
-        <Tooltip title="Account settings">
-          <IconButton
-            onClick={handleClick}
-            size="small"
-            aria-controls={open ? 'account-menu' : undefined}
-            aria-haspopup="true"
-            aria-expanded={open ? 'true' : undefined}
+          <Box
+            sx={{ display: "flex", alignItems: "center", textAlign: "center" }}
           >
-            <Avatar sx={{ width: 32, height: 32 }}></Avatar>
-          </IconButton>
-        </Tooltip>
-      </Box>
-      <Menu
-        anchorEl={anchorEl}
-        id="account-menu"
-        open={open}
-        onClose={handleClose}
-        onClick={handleClose}
-        Paper={{
-          elevation: 0,
-          sx: {
-            overflow: 'visible',
-            filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
-            mt: 1.5,
-            '& .MuiAvatar-root': {
-              width: 32,
-              height: 32,
-              ml: -0.5,
-              mr: 1,
-            },
-            '&:before': {
-              content: '""',
-              display: 'block',
-              position: 'absolute',
-              top: 0,
-              right: 14,
-              width: 10,
-              height: 10,
-              bgcolor: 'background.paper',
-              transform: 'translateY(-50%) rotate(45deg)',
-              zIndex: 0,
-            },
-          },
-        }}
-        transformOrigin={{ horizontal: 'right', vertical: 'top' }}
-        anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
-      >
-        <MenuItem onClick={handleClose}>
-          <Avatar /> Crear Cuenta
-        </MenuItem>
-        {/* <MenuItem onClick={handleClose}>
+            <Tooltip title="Account settings">
+              <IconButton
+                onClick={handleClick}
+                size="small"
+                aria-controls={open ? "account-menu" : undefined}
+                aria-haspopup="true"
+                aria-expanded={open ? "true" : undefined}
+              >
+                <Avatar sx={{ width: 32, height: 32 }}></Avatar>
+              </IconButton>
+            </Tooltip>
+          </Box>
+          <Menu
+            anchorEl={anchorEl}
+            id="account-menu"
+            open={open}
+            onClose={handleClose}
+            onClick={handleClose}
+            Paper={{
+              elevation: 0,
+              sx: {
+                overflow: "visible",
+                filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
+                mt: 1.5,
+                "& .MuiAvatar-root": {
+                  width: 32,
+                  height: 32,
+                  ml: -0.5,
+                  mr: 1,
+                },
+                "&:before": {
+                  content: '""',
+                  display: "block",
+                  position: "absolute",
+                  top: 0,
+                  right: 14,
+                  width: 10,
+                  height: 10,
+                  bgcolor: "background.paper",
+                  transform: "translateY(-50%) rotate(45deg)",
+                  zIndex: 0,
+                },
+              },
+            }}
+            transformOrigin={{ horizontal: "right", vertical: "top" }}
+            anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
+          >
+            <MenuItem onClick={handleClose}>
+              <Avatar /> Crear Cuenta
+            </MenuItem>
+            {/* <MenuItem onClick={handleClose}>
           <Avatar /> My account
         </MenuItem> */}
-        <Divider />
-        {/* <MenuItem onClick={handleClose}>
+            <Divider />
+            {/* <MenuItem onClick={handleClose}>
           <ListItemIcon>
             <PersonAdd fontSize="small" />
           </ListItemIcon>
           Add another account
         </MenuItem> */}
-        <MenuItem onClick={handleClose}>
-          <ListItemIcon>
-            <Settings fontSize="small" />
-          </ListItemIcon>
-          Ajustes
-        </MenuItem>
-        <MenuItem onClick={handleClose}>
-          <ListItemIcon>
-            <Logout fontSize="small" />
-          </ListItemIcon>
-          Cerrar Sesión
-        </MenuItem>
-      </Menu>
+            <MenuItem onClick={handleClose}>
+              <ListItemIcon>
+                <Settings fontSize="small" />
+              </ListItemIcon>
+              Ajustes
+            </MenuItem>
+            <MenuItem onClick={handleClose}>
+              <ListItemIcon>
+                <Logout fontSize="small" />
+              </ListItemIcon>
+              Cerrar Sesión
+            </MenuItem>
+          </Menu>
         </Toolbar>
       </Container>
     </AppBar>
