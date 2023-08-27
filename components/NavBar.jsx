@@ -7,7 +7,6 @@ import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
-import Drawer from "@mui/material/Drawer";
 import Container from "@mui/material/Container";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
@@ -16,12 +15,7 @@ import MenuItem from "@mui/material/MenuItem";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import Badge from "@mui/material/Badge";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import Divider from "@mui/material/Divider";
-import Settings from "@mui/icons-material/Settings";
-import Logout from "@mui/icons-material/Logout";
 import { styled } from "@mui/material/styles";
-import Link from "next/link";
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
   "& .MuiBadge-badge": {
@@ -33,19 +27,21 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 }));
 
 const pages = ["Ofertas", "Productos", "Info", "Contacto"];
+const settings = ["Perfil", "Carrito", "Cerrar Sesión"];
 
 function ResponsiveAppBar() {
-  const [drawerOpen, setDrawerOpen] = React.useState(false);
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const open = Boolean(anchorEl);
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
+  const [anchorElNav, setAnchorElNav] = React.useState(null);
+  const [anchorElUser, setAnchorElUser] = React.useState(null);
+
+  const handleOpenNavMenu = (event) => {
+    setAnchorElNav(event.currentTarget);
   };
-  const handleClose = () => {
-    setAnchorEl(null);
+  const handleOpenUserMenu = (event) => {
+    setAnchorElUser(event.currentTarget);
   };
+
   const handleCloseNavMenu = () => {
-    setAnchorEl(null);
+    setAnchorElNav(null);
   };
 
   const toggleDrawer = (open) => (event) => {
@@ -60,7 +56,7 @@ function ResponsiveAppBar() {
   };
 
   return (
-    <AppBar position="sticky">
+    <AppBar position="fixed">
       <Container className="App_Bar" maxWidth="xl">
         <Toolbar disableGutters>
           <Typography
@@ -87,53 +83,35 @@ function ResponsiveAppBar() {
               aria-label="account of current user"
               aria-controls="menu-appbar"
               aria-haspopup="true"
-              onClick={toggleDrawer(true)}
+              onClick={handleOpenNavMenu}
               color="inherit"
             >
               <MenuIcon />
             </IconButton>
-            <Drawer
-              anchor="left"
-              open={drawerOpen}
-              onClose={toggleDrawer(false)}
+            <Menu
+              id="menu-appbar"
+              anchorEl={anchorElNav}
+              anchorOrigin={{
+                vertical: "bottom",
+                horizontal: "left",
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: "top",
+                horizontal: "left",
+              }}
+              open={Boolean(anchorElNav)}
+              onClose={handleCloseNavMenu}
+              sx={{
+                display: { xs: "block", md: "none" },
+              }}
             >
-              <Box
-                sx={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  p: 2,
-                }}
-              >
-                {pages.map((page) => (
-                  <Link key={page} href={`${page}`}>
-                    <MenuItem
-                      key={page}
-                      onClick={toggleDrawer(false)}
-                      sx={{
-                        "&:hover": {
-                          backgroundColor: "rgba(0, 0, 0, 0.1)",
-                        },
-                      }}
-                    >
-                      <Typography
-                        variant="h6"
-                        textAlign="center"
-                        sx={{
-                          fontFamily: "Arial",
-                          fontSize: "18px",
-                          color: "text.primary",
-                        }}
-                      >
-                        {page}
-                      </Typography>
-                    </MenuItem>
-                    <a>{page}</a>
-                  </Link>
-                ))}
-              </Box>
-            </Drawer>
+              {pages.map((page) => (
+                <MenuItem key={page} onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center">{page}</Typography>
+                </MenuItem>
+              ))}
+            </Menu>
           </Box>
 
           <Typography

@@ -20,7 +20,7 @@ const CardCarousel = ({ cards }) => {
 
   return (
     <div className="card-carousel">
-      <div className="card-slider" style={{ transform: `translateX(-${activeIndex * 110}px)` }}>
+      <div className="card-slider" style={{ transform: `translateX(-${activeIndex * 120}px)` }}>
         {cards.map((card, index) => (
           <Card key={index} className="carousel-card">
             <CardMedia

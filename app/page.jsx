@@ -2,13 +2,11 @@ import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
-
 import ImageSlider from "@components/ImagenSlider.jsx";
 import { SliderData } from "@components/SliderData.js";
 import Texto1 from "@components/Texto1.jsx";
 import Cards from "@components/Cards.jsx";
 import CarouselCard from "@components/CarouselCard.jsx";
-import Texto2 from "@components/Texto2";
 
 const imagenes = [
   "https://cdn.aarp.net/content/dam/aarp/entertainment/beauty-and-style/2020/04/1140-hair-products-on-table-esp.imgcache.rev.web.1914.1100.jpg",
