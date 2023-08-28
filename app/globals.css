@@ -49,6 +49,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
   justify-content: center;
+  gap: 20px;
 }
 .cardBody {
   background-color: rgb(96, 96, 96);

@@ -12,6 +12,10 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
+import Divider from "@mui/material/Divider";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import Settings from "@mui/icons-material/Settings";
+import Logout from "@mui/icons-material/Logout";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import Badge from "@mui/material/Badge";
@@ -27,11 +31,17 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 }));
 
 const pages = ["Ofertas", "Productos", "Info", "Contacto"];
-const settings = ["Perfil", "Carrito", "Cerrar Sesión"];
+
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const [openMenu, setOpenMenu] = React.useState(null); // Cambio aquí
+  const anchorEl = Boolean(anchorElUser);
+
+  const handleClick = (event) => {
+    setOpenMenu(event.currentTarget); // Cambio aquí
+  };
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -39,17 +49,6 @@ function ResponsiveAppBar() {
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
-  };
-
-  const toggleDrawer = (open) => (event) => {
-    if (
-      event &&
-      event.type === "keydown" &&
-      (event.key === "Tab" || event.key === "Shift")
-    ) {
-      return;
-    }
-    setDrawerOpen(open);
   };
 
   return (
@@ -179,9 +178,9 @@ function ResponsiveAppBar() {
               <IconButton
                 onClick={handleClick}
                 size="small"
-                aria-controls={open ? "account-menu" : undefined}
+                aria-controls={openMenu ? "account-menu" : undefined}
                 aria-haspopup="true"
-                aria-expanded={open ? "true" : undefined}
+                aria-expanded={openMenu ? "true" : undefined}
               >
                 <Avatar sx={{ width: 32, height: 32 }}></Avatar>
               </IconButton>
@@ -190,9 +189,8 @@ function ResponsiveAppBar() {
           <Menu
             anchorEl={anchorEl}
             id="account-menu"
-            open={open}
-            onClose={handleClose}
-            onClick={handleClose}
+            open={openMenu}
+            onClose={() => setOpenMenu(null)}
             Paper={{
               elevation: 0,
               sx: {
@@ -222,7 +220,7 @@ function ResponsiveAppBar() {
             transformOrigin={{ horizontal: "right", vertical: "top" }}
             anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
           >
-            <MenuItem onClick={handleClose}>
+            <MenuItem onClick={() => setOpenMenu(null)}>
               <Avatar /> Crear Cuenta
             </MenuItem>
             {/* <MenuItem onClick={handleClose}>
@@ -235,13 +233,13 @@ function ResponsiveAppBar() {
           </ListItemIcon>
           Add another account
         </MenuItem> */}
-            <MenuItem onClick={handleClose}>
+            <MenuItem onClick={() => setOpenMenu(null)}>
               <ListItemIcon>
                 <Settings fontSize="small" />
               </ListItemIcon>
               Ajustes
             </MenuItem>
-            <MenuItem onClick={handleClose}>
+            <MenuItem onClick={() => setOpenMenu(null)}>
               <ListItemIcon>
                 <Logout fontSize="small" />
               </ListItemIcon>
@@ -253,4 +251,5 @@ function ResponsiveAppBar() {
     </AppBar>
   );
 }
+
 export default ResponsiveAppBar;
