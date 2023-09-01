@@ -1,59 +1,49 @@
-"use client";
-import * as React from "react";
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
-import Menu from "@mui/material/Menu";
-import MenuIcon from "@mui/icons-material/Menu";
-import Container from "@mui/material/Container";
-import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
-import Tooltip from "@mui/material/Tooltip";
-import MenuItem from "@mui/material/MenuItem";
-import Divider from "@mui/material/Divider";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import Settings from "@mui/icons-material/Settings";
-import Logout from "@mui/icons-material/Logout";
+"use client"
+import * as React from 'react';
+import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import Toolbar from '@mui/material/Toolbar';
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
+import Menu from '@mui/material/Menu';
+import MenuIcon from '@mui/icons-material/Menu';
+import Container from '@mui/material/Container';
+import Avatar from '@mui/material/Avatar';
+import Button from '@mui/material/Button';
+import Tooltip from '@mui/material/Tooltip';
+import MenuItem from '@mui/material/MenuItem';
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
-import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
-import Badge from "@mui/material/Badge";
-import { styled } from "@mui/material/styles";
+import SearchIcon from '@mui/icons-material/Search';
+import { StyledBadge, Search, SearchIconWrapper, StyledInputBase } from '@styles/styleNavBar.jsx';
 
-const StyledBadge = styled(Badge)(({ theme }) => ({
-  "& .MuiBadge-badge": {
-    right: 10,
-    top: 1,
-    border: `2px solid ${theme.palette.background.paper}`,
-    padding: "0 4px",
-  },
-}));
-
-const pages = ["Ofertas", "Productos", "Info", "Contacto"];
-
+const pages = ['Products', 'Pricing', 'Blog'];
+const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function ResponsiveAppBar() {
+
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
-  const [openMenu, setOpenMenu] = React.useState(null); // Cambio aquí
-  const anchorEl = Boolean(anchorElUser);
-
-  const handleClick = (event) => {
-    setOpenMenu(event.currentTarget); // Cambio aquí
-  };
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
+  };
+  const handleOpenUserMenu = (event) => {
+    setAnchorElUser(event.currentTarget);
   };
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
 
+  const handleCloseUserMenu = () => {
+    setAnchorElUser(null);
+  };
+// desde aqui son nuevos
+
+
   return (
-    <AppBar position="fixed">
-      <Container className="App_Bar" maxWidth="xl">
+    <AppBar position="sticky">
+      <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Typography
             variant="h6"
@@ -61,21 +51,21 @@ function ResponsiveAppBar() {
             component="a"
             href="/"
             sx={{
-              mr: 2,
-              display: { xs: "none", md: "flex" },
-              fontFamily: "initial",
-              fontWeight: 400,
-              letterSpacing: ".0rem",
-              color: "inherit",
-              textDecoration: "none",
+              // mr: 2,
+              display: { xs: 'none', md: 'flex' },
+              fontFamily: 'sans-serif',
+              fontWeight: 500,
+              letterSpacing: '.0rem',
+              color: 'inherit',
+              textDecoration: 'none',
             }}
           >
             MercancíaVC
           </Typography>
 
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
-              size="medium"
+              size="large"
               aria-label="account of current user"
               aria-controls="menu-appbar"
               aria-haspopup="true"
@@ -88,18 +78,18 @@ function ResponsiveAppBar() {
               id="menu-appbar"
               anchorEl={anchorElNav}
               anchorOrigin={{
-                vertical: "bottom",
-                horizontal: "left",
+                vertical: 'bottom',
+                horizontal: 'left',
               }}
               keepMounted
               transformOrigin={{
-                vertical: "top",
-                horizontal: "left",
+                vertical: 'top',
+                horizontal: 'left',
               }}
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
               sx={{
-                display: { xs: "block", md: "none" },
+                display: { xs: 'block', md: 'none' },
               }}
             >
               {pages.map((page) => (
@@ -109,52 +99,49 @@ function ResponsiveAppBar() {
               ))}
             </Menu>
           </Box>
-
           <Typography
             variant="h5"
             noWrap
             component="a"
             href="/"
             sx={{
-              mr: 2,
-              display: { xs: "flex", md: "none" },
+              //  mr: 2,
+              display: { xs: 'flex', md: 'none' },
               flexGrow: 1,
-              fontFamily: "initial",
-              fontWeight: 400,
-              letterSpacing: ".0rem",
-              color: "inherit",
-              textDecoration: "none",
+              fontFamily: 'sans-serif',
+              fontWeight: 500,
+              letterSpacing: '.rem',
+              color: 'inherit',
+              textDecoration: 'none',
             }}
           >
-            MercancíaVC
+            X
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }}}>
             {pages.map((page) => (
               <Button
                 key={page}
                 onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "white", display: "block" }}
+                sx={{ my: 2, color: 'white', display: 'block' }}
               >
                 {page}
               </Button>
             ))}
           </Box>
-          <Box>
+          <Box sx={{ display: 'flex'}}>
             <Tooltip title="Buscar">
-              <IconButton
-                className="navB"
-                color="primary"
-                aria-label="search"
-                onClick={""}
-              >
-                <SearchOutlinedIcon
-                  sx={{ fontSize: 25, color: "ButtonHighlight" }}
-                />
-              </IconButton>
+            <Search>
+            <SearchIconWrapper>
+              <SearchIcon />
+            </SearchIconWrapper>
+            <StyledInputBase
+              placeholder="Search…"
+              inputProps={{ 'aria-label': 'search' }}
+            />
+          </Search>
             </Tooltip>
             <Tooltip title="Ver carrito">
               <IconButton
-                className="navB"
                 color="primary"
                 aria-label="buy_car"
                 onClick={""}
@@ -171,85 +158,39 @@ function ResponsiveAppBar() {
               </IconButton>
             </Tooltip>
           </Box>
-          <Box
-            sx={{ display: "flex", alignItems: "center", textAlign: "center" }}
-          >
-            <Tooltip title="Account settings">
-              <IconButton
-                onClick={handleClick}
-                size="small"
-                aria-controls={openMenu ? "account-menu" : undefined}
-                aria-haspopup="true"
-                aria-expanded={openMenu ? "true" : undefined}
-              >
-                <Avatar sx={{ width: 32, height: 32 }}></Avatar>
+          
+          <Box sx={{ flexGrow: 0 }}>
+            <Tooltip title="Open settings">
+              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
               </IconButton>
             </Tooltip>
+            <Menu
+              sx={{ mt: '45px' }}
+              id="menu-appbar"
+              anchorEl={anchorElUser}
+              anchorOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              open={Boolean(anchorElUser)}
+              onClose={handleCloseUserMenu}
+            >
+              {settings.map((setting) => (
+                <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                  <Typography textAlign="center">{setting}</Typography>
+                </MenuItem>
+              ))}
+            </Menu>
           </Box>
-          <Menu
-            anchorEl={anchorEl}
-            id="account-menu"
-            open={openMenu}
-            onClose={() => setOpenMenu(null)}
-            Paper={{
-              elevation: 0,
-              sx: {
-                overflow: "visible",
-                filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
-                mt: 1.5,
-                "& .MuiAvatar-root": {
-                  width: 32,
-                  height: 32,
-                  ml: -0.5,
-                  mr: 1,
-                },
-                "&:before": {
-                  content: '""',
-                  display: "block",
-                  position: "absolute",
-                  top: 0,
-                  right: 14,
-                  width: 10,
-                  height: 10,
-                  bgcolor: "background.paper",
-                  transform: "translateY(-50%) rotate(45deg)",
-                  zIndex: 0,
-                },
-              },
-            }}
-            transformOrigin={{ horizontal: "right", vertical: "top" }}
-            anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
-          >
-            <MenuItem onClick={() => setOpenMenu(null)}>
-              <Avatar /> Crear Cuenta
-            </MenuItem>
-            {/* <MenuItem onClick={handleClose}>
-          <Avatar /> My account
-        </MenuItem> */}
-            <Divider />
-            {/* <MenuItem onClick={handleClose}>
-          <ListItemIcon>
-            <PersonAdd fontSize="small" />
-          </ListItemIcon>
-          Add another account
-        </MenuItem> */}
-            <MenuItem onClick={() => setOpenMenu(null)}>
-              <ListItemIcon>
-                <Settings fontSize="small" />
-              </ListItemIcon>
-              Ajustes
-            </MenuItem>
-            <MenuItem onClick={() => setOpenMenu(null)}>
-              <ListItemIcon>
-                <Logout fontSize="small" />
-              </ListItemIcon>
-              Cerrar Sesión
-            </MenuItem>
-          </Menu>
         </Toolbar>
       </Container>
     </AppBar>
   );
 }
-
 export default ResponsiveAppBar;

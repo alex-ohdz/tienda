@@ -1,15 +1,13 @@
 
 .App_Bar {
-  padding-left: 10px;
-  padding-right: 10px;
-  background-color: rgba(0, 0, 0, 0.841);
+  background-color: rgba(82, 73, 73, 0.841);
 }
 
 /* ################################# */
 
 /* Base styles */
 .slider {
-  margin-top: 10vh; /* Add the desired top margin */
+  margin-top: 0vh; /* Add the desired top margin */
   /* Other existing styles for .slider */
 }
 .slider-container {
@@ -30,11 +28,26 @@
 
 .image {
   display: block;
-  height: 50vh; /* Set a fixed height */
   width: 100%; /* Set a fixed width */
   object-fit: cover; /* Maintain aspect ratio and cover the container */
   margin: auto;
 }
+@media (max-width: 767px) {
+  .image {
+    height: 35vh; /* Ajusta la altura para pantallas pequeñas */
+  }
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+  .image {
+    height: 45vh; /* Ajusta la altura para pantallas medianas */
+  }
+}
+@media (min-width: 1024px) {
+  .image {
+    height: 55vh; /* Mantén la altura fija para pantallas grandes */
+  }
+}
+
 .paginar{
   margin-top: 1rem;
   margin-bottom: 1rem;

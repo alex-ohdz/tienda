@@ -8,6 +8,7 @@ import Texto1 from "@components/Texto1.jsx";
 import Cards from "@components/Cards.jsx";
 import CarouselCard from "@components/CarouselCard.jsx";
 import ResponsiveAppBar from "@components/NavBar";
+import Footer from "@components/Footer";
 
 const imagenes = [
   "https://cdn.aarp.net/content/dam/aarp/entertainment/beauty-and-style/2020/04/1140-hair-products-on-table-esp.imgcache.rev.web.1914.1100.jpg",
@@ -56,7 +57,7 @@ export default function Home() {
       <CarouselCard  cards={offers} />
       {/* <Texto2 titulo={"Nuestros Productos"} description={""}/> */}
       <Cards imagenes={imagenes}/>
-      
+      <Footer/>
       
     </main>
   );
