@@ -1,6 +1,8 @@
 import InputBase from '@mui/material/InputBase';
 import Badge from "@mui/material/Badge";
 import { styled, alpha } from '@mui/material/styles';
+
+
 export const StyledBadge = styled(Badge)(({ theme }) => ({
 	"& .MuiBadge-badge": {
 	  right: 10,
@@ -38,21 +40,23 @@ export const StyledInputBase = styled(InputBase)(({ theme }) => ({
 	'& .MuiInputBase-input': {
 	  padding: theme.spacing(1, 1, 1, 0),
 	  // vertical padding + font size from searchIcon
-	  paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-	  transition: theme.transitions.create('width'),
-	  width: '100%',
-	  [theme.breakpoints.up('md')]: {
-		width: '25ch',
-		'&:focus': {
-		  width: '35ch',
-		},
+	  paddingLeft: `calc(1em + ${theme.spacing(4)})` 
+	//   ,
+	//   transition: theme.transitions.create('width')
+	//   ,	  width: '100%',
+	//   [theme.breakpoints.up('md')]: {
+	// 	width: '25ch',
+	// 	'&:focus': {
+	// 	  width: '35ch',
+	// 	},
 		
-	  },
-	  [theme.breakpoints.down('md')]: {
-		width: '8ch', // Cambia el ancho a 10 caracteres
-		'&:focus': {
-		  width: '10ch', // Cambia el ancho a 12 caracteres cuando está enfocado
-		},
-	  },
+	//   },
+	//   [theme.breakpoints.down('md')]: {
+	// 	width: '10ch', 
+	// 	'&:focus': {
+	// 	  width: '14ch', 
+	// 	},
+	//   },
 	},
-  }));
+  }
+  ));

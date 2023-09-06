@@ -7,7 +7,7 @@ import { SliderData } from "@components/SliderData.js";
 import Texto1 from "@components/Texto1.jsx";
 import Cards from "@components/Cards.jsx";
 import CarouselCard from "@components/CarouselCard.jsx";
-import ResponsiveAppBar from "@components/NavBar";
+import DrawerAppBar from "@components/NavBar";
 import Footer from "@components/Footer";
 
 const imagenes = [
@@ -51,7 +51,7 @@ const offers = [
 export default function Home() {
   return (
     <main>
-      <ResponsiveAppBar/>
+      <DrawerAppBar/>
       <ImageSlider slides={SliderData} />
       <Texto1 titulo={"¡Ofertas Especiales!"} description={"Descubre nuestras increíbles ofertas disponibles."}/>
       <CarouselCard  cards={offers} />
