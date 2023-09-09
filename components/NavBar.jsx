@@ -29,19 +29,16 @@ import {
 import Link from "next/link";
 
 const drawerWidth = 240;
-// const navItems = [
-//   { label: 'Home', route: '/' },
-//   { label: 'About', route: '/about' },
-//   { label: 'Contact', route: '/contact' },
-// ];
-const navItems = ["Home", "About", "Contact"];
+
+const navItems = ["Ofertas", "About", "Contact"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 export default function DrawerAppBar(props) {
   const { window } = props;
-  const [mobileOpen, setMobileOpen] = React.useState(false);
+  const [mobileOpen, setMobileOpen] = React.useState(true);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const handleDrawerToggle = () => {
+    console.log("Toggle drawer");
     setMobileOpen((prevState) => !prevState);
   };
   const handleOpenUserMenu = (event) => {
@@ -69,8 +66,8 @@ export default function DrawerAppBar(props) {
     </Box>
   );
 
-  const container =
-    window !== undefined ? () => window().document.body : undefined;
+  const container = window !== undefined ? () => document.body : undefined;
+
 
   return (
     <Box sx={{ display: "flex" }}>
@@ -84,7 +81,7 @@ export default function DrawerAppBar(props) {
             onClick={handleDrawerToggle}
             sx={{ display: { sm: "none" } }}
           >
-            <MenuIcon />
+            <MenuIcon/>
           </IconButton>
           <Typography
             variant="h6"
